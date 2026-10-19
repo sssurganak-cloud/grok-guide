@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Grok Mobile Master Guide</title>
+<style>
+  :root {
+    --bg: #090d16;
+    --card: #131b2e;
+    --accent: #f59e0b;
+    --green: #10b981;
+    --red: #ef4444;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px;
+  }
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(9, 13, 22, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 14px 16px;
+    border-bottom: 1px solid #1e293b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .title { font-size: 14px; font-weight: 800; color: var(--accent); letter-spacing: 0.5px; }
+  .badge { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .container { padding: 16px; flex: 1; }
+  .slide {
+    display: none;
+    background: var(--card);
+    border: 1px solid #26334d;
+    border-radius: 16px;
+    padding: 22px 18px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  }
+  .slide.active { display: block; animation: fade 0.2s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .step-tag {
+    display: inline-block;
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  h1 { font-size: 22px; line-height: 1.25; margin-bottom: 12px; color: #fff; }
+  p { font-size: 15px; line-height: 1.5; color: #cbd5e1; margin-bottom: 12px; }
+  .box {
+    background: #0b101b;
+    border-left: 4px solid var(--accent);
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .box.good { border-left-color: var(--green); }
+  .box.bad { border-left-color: var(--red); }
+  .box h3 { font-size: 15px; margin-bottom: 6px; color: #fff; }
+  .prompt-box {
+    background: #060911;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 14px;
+  }
+  .prompt-text {
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #38bdf8;
+    word-break: break-word;
+    margin-bottom: 10px;
+  }
+  .copy-btn {
+    width: 100%;
+    background: #1e293b;
+    color: #fff;
+    border: 1px solid #334155;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .copy-btn:active { background: var(--accent); color: #000; }
+  .nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #070a12;
+    border-top: 1px solid #1e293b;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .nav-btn {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .nav-btn.secondary { background: #1e293b; color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title">DREAM UNIVERSAL // GROK GUIDE</div>
+  <div class="badge" id="counter">Слайд 1 / 7</div>
+</div>
+
+<div class="container">
+
+  <!-- SLIDE 1 -->
+  <div class="slide active">
+    <span class="step-tag">Базовый алгоритм</span>
+    <h1>Как делать клипы в Grok без брака</h1>
+    <p>Вся работа делится строго на 2 шага для каждой сцены:</p>
+    <div class="box good">
+      <h3>1. Сначала ФОТО (Image Prompt)</h3>
+      <p>Генерируем стартовый кадр 16:9. В нём зашиты лицо, куртка, кеды, секундомер в правой руке и пустое левое запястье.</p>
+    </div>
+    <div class="box good">
+      <h3>2. Затем ВИДЕО (Video Prompt 10s / 15s)</h3>
+      <p>Прикрепляем готовое фото и пишем <strong>только движение камеры и ровный шаг</strong>. Одежду и часы повторно не описываем!</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <span class="step-tag">Главные ошибки и решения</span>
+    <h1>Почему ломались двери и походка</h1>
+    <div class="box bad">
+      <h3>Ошибка 1: Широкий проём вместо метро</h3>
+      <p>Камера внутри вагона + слово "Symmetrical" сносят стены поезда. <strong>Решение:</strong> ставить камеру <em>снаружи на перроне</em> лицом к поезду.</p>
+    </div>
+    <div class="box bad">
+      <h3>Ошибка 2: Прыгающая походка</h3>
+      <p>Слова "120 BPM" и "on the beat" заставляют героя подпрыгивать. <strong>Решение:</strong> писать <code>calm, heavy, grounded heel-to-toe stride</code>.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <span class="step-tag">Сцена 1 • 0:00–0:15 (15 сек)</span>
+    <h1>Выход из поезда на перрон</h1>
+    <p><strong>Шаг 1. Промпт для ФОТО:</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="p1">Cinematic medium-full shot in the style of Denis Villeneuve, 16:9. Camera stands on an underground subway station platform facing the long brushed-steel exterior side of a subway train parked on the tracks. The standard narrow sliding side doors are open. Standing right on the train threshold facing the camera is a 25-year-old athletic man with short dark hair, matte charcoal-grey bomber jacket, black t-shirt, slim black jeans, matching black sneakers with white rubber soles, and white wired earphones. His right hand holds a round steel stopwatch with a sterile white dial at chest level, thumb on top button; bare empty left wrist. Commuters on the platform stand frozen like statues. Clean background with zero text and zero wall clocks. Two arms, two hands with five fingers, two legs, matching shoes.</div>
+      <button class="copy-btn" onclick="copyText('p1', this)">Скопировать Image Prompt</button>
+    </div>
+    <p><strong>Шаг 2. Промпт для ВИДЕО (15 сек):</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="v1">15 seconds. 0-3s: The man presses the top button of the steel stopwatch with his right thumb. 3-15s: Smooth backward dolly camera gliding along the platform as the man steps out of the train doors and walks forward with a calm, heavy, grounded heel-to-toe stride and level shoulders. Commuters around him remain frozen like statues, while square floor tiles beneath his sneakers light up with a warm golden glow as he steps on them. Stable anatomy, two arms, two legs, matching sneakers.</div>
+      <button class="copy-btn" onclick="copyText('v1', this)">Скопировать Video Prompt</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide">
+    <span class="step-tag">Сцена 2 • 0:15–0:30 (15 сек)</span>
+    <h1>Застывший дождь и спорткары</h1>
+    <p><strong>Шаг 1. Промпт для ФОТО:</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="p2">Cinematic wide-medium shot in the style of Denis Villeneuve and Edgar Wright, 16:9. Nighttime wet city street with clean dark architectural facades and zero text signs. Thousands of crystal-clear raindrops hang motionless in mid-air. A 25-year-old athletic man with short dark hair in a matte charcoal-grey bomber jacket, black t-shirt, slim black jeans, matching black sneakers with white rubber soles, and white wired earphones walks forward down the center of the wet asphalt. His right hand holds a round brushed-steel stopwatch at waist level; his left hand is raised with five clear fingers touching one large floating raindrop, bare empty left wrist visible. Behind him on the intersection, two sleek dark sports cars sit frozen mid-drift with glowing golden headlights. Two arms, two hands with five fingers, two legs, matching shoes.</div>
+      <button class="copy-btn" onclick="copyText('p2', this)">Скопировать Image Prompt</button>
+    </div>
+    <p><strong>Шаг 2. Промпт для ВИДЕО (15 сек):</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="v2">15 seconds. 0-7s: Smooth backward tracking camera as the man walks forward with a calm, grounded, level heel-to-toe stride through thousands of motionless raindrops suspended in mid-air; his left hand gently touches one floating drop, sending a golden ripple through it. 7-15s: Camera orbits smoothly to a side profile as he walks steadily between two sports cars frozen mid-drift while their golden headlights glow on the wet asphalt. Stable anatomy, two arms, two legs, matching footwear.</div>
+      <button class="copy-btn" onclick="copyText('v2', this)">Скопировать Video Prompt</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide">
+    <span class="step-tag">Сцена 3 • 0:30–0:40 (10 сек)</span>
+    <h1>Стеклянный лифт</h1>
+    <p><strong>Шаг 1. Промпт для ФОТО:</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="p3">Cinematic full-body shot in the style of Christopher Nolan and Denis Villeneuve, 16:9. Inside a compact rectangular glass-walled exterior elevator cab ascending the outside of a dark steel skyscraper at night. A metal waist-high handrail runs along the glass wall behind the man, with clean steel door frames and zero text signs. A 25-year-old athletic man with short dark hair in a matte charcoal-grey bomber jacket, black t-shirt, slim black jeans, matching black sneakers with white rubber soles, and white wired earphones stands in the center of the cab facing the camera. His right hand holds a brushed-steel stopwatch; his left arm hangs naturally by his side with a bare empty left wrist. Outside the glass behind him, distant city lights streak vertically into golden and cyan lines. Two arms, two hands with five fingers, two legs, matching shoes.</div>
+      <button class="copy-btn" onclick="copyText('p3', this)">Скопировать Image Prompt</button>
+    </div>
+    <p><strong>Шаг 2. Промпт для ВИДЕО (10 сек):</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="v3">10 seconds. Inside the glass elevator rising rapidly upward; city lights outside the glass walls stretch into fast vertical golden trails as the camera pushes in slowly on the man standing steady and looking calmly upward toward the approaching rooftop. Stable anatomy, two arms, two legs, single stopwatch in right hand.</div>
+      <button class="copy-btn" onclick="copyText('v3', this)">Скопировать Video Prompt</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide">
+    <span class="step-tag">Сцена 4 • 0:40–0:50 (10 сек)</span>
+    <h1>Выход на крышу к башне</h1>
+    <p><strong>Шаг 1. Промпт для ФОТО:</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="p4">Cinematic wide full-body rear three-quarter shot in the style of Christopher Nolan, 16:9. On a flat wet concrete skyscraper rooftop at night with a low concrete parapet edge. A 25-year-old athletic man with short dark hair in a matte charcoal-grey bomber jacket, slim black jeans, and matching black sneakers with white rubber soles stands on the rooftop facing a massive architectural glass tower across the street featuring a giant illuminated round white clock face with black hands frozen one tick before midnight and zero text. His right hand at his side holds his small steel handheld timer; his left wrist is bare and empty. Cold steel-blue night sky with warm golden light from the tower. Two arms, two hands with five fingers, two legs, matching shoes.</div>
+      <button class="copy-btn" onclick="copyText('p4', this)">Скопировать Image Prompt</button>
+    </div>
+    <p><strong>Шаг 2. Промпт для ВИДЕО (10 сек):</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="v4">10 seconds. Smooth forward tracking camera following behind the man as he walks briskly with a heavy, grounded, natural stride across the wet concrete rooftop toward the low parapet edge facing the giant illuminated clock face frozen one tick before 12:00, stopping firmly at the ledge and raising his right hand. Stable anatomy, two arms, two legs, matching sneakers.</div>
+      <button class="copy-btn" onclick="copyText('v4', this)">Скопировать Video Prompt</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide">
+    <span class="step-tag">Сцена 5 • 0:50–1:00 (15 сек)</span>
+    <h1>Золотая волна и возврат в петлю</h1>
+    <p><strong>Шаг 1. Промпт для ФОТО:</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="p5">Cinematic wide-medium shot in the style of Denis Villeneuve and Edgar Wright, 16:9. A 25-year-old athletic man with short dark hair in a matte charcoal-grey bomber jacket, black t-shirt, slim black jeans, matching black sneakers with white rubber soles, and white wired earphones stands at the skyscraper rooftop parapet overlooking the dark night metropolis. His right arm is raised forward holding the round brushed-steel stopwatch with his right thumb on the top button; his left arm hangs relaxed at his side with a bare empty left wrist. A bright circular ring of warm golden light radiates outward from the stopwatch across the dark city skyline. Clean skyline with zero text. Two arms, two hands with five fingers, two legs, matching sneakers.</div>
+      <button class="copy-btn" onclick="copyText('p5', this)">Скопировать Image Prompt</button>
+    </div>
+    <p><strong>Шаг 2. Промпт для ВИДЕО (15 сек):</strong></p>
+    <div class="prompt-box">
+      <div class="prompt-text" id="v5">15 seconds. 0-7s: The man's right thumb presses the stopwatch button; a bright golden shockwave ring expands rapidly across the night skyline, waking up golden city traffic below and making suspended raindrops fall. 7-15s: Camera zooms smoothly into the white stopwatch dial in his right hand as the needle resets to zero, transitioning the background back into the subway station train doorway in the exact starting pose of Scene 1.</div>
+      <button class="copy-btn" onclick="copyText('v5', this)">Скопировать Video Prompt</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="nav-bar">
+  <button class="nav-btn secondary" onclick="move(-1)">← Назад</button>
+  <button class="nav-btn" onclick="move(1)">Дальше →</button>
+</div>
+
+<script>
+  let idx = 0;
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  function move(step) {
+    slides[idx].classList.remove('active');
+    idx = (idx + step + slides.length) % slides.length;
+    slides[idx].classList.add('active');
+    counter.textContent = 'Слайд ' + (idx + 1) + ' / ' + slides.length;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function copyText(id, btn) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text);
+    const old = btn.innerText;
+    btn.innerText = '✓ Скопировано!';
+    btn.style.background = '#10b981';
+    btn.style.color = '#000';
+    setTimeout(() => {
+      btn.innerText = old;
+      btn.style.background = '#1e293b';
+      btn.style.color = '#fff';
+    }, 1500);
+  }
+</script>
+</body>
+</html>
